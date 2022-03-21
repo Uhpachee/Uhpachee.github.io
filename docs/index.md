@@ -8,3 +8,6 @@ Hack 3: This one sounds kind of difficult to navigate but the actual plan seems 
 
 # Linked Lists
 Linked lists are a linear collection of data elements whose order is not given by their physical placement in memory.
+
+# Generic T
+Can be used for any "type" and represents a generic class.
