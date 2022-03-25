@@ -3,7 +3,7 @@ import java.util.stream.Collectors;
 
 public class randomOrder {
     private static Integer tries = 0;
-    private static Double input;
+    private static Double budget;
     public void test1() {
         List<Map<Integer, String>> items = new ArrayList<>();
 
@@ -12,15 +12,19 @@ public class randomOrder {
 
     public static void test2() {
         Scanner scan = new Scanner(System.in);
+        //makes sure it only asks for budget once so that when it iterates it doesn't ask for it again
         if (tries == 0) {
             System.out.println("Budget:");
-            input = Double.parseDouble(scan.nextLine());
+            budget = Double.parseDouble(scan.nextLine());
         }
         tries += 1;
+        //creates overarching hashmap that includes restaurants
         Map<String, Map<String, Double>> items1 = new HashMap<>();
+        //creates each restaurant
         Map<String, Double> CFA = new HashMap<>();
         Map<String, Double> McD = new HashMap<>();
         Map<String, Double> Wdy = new HashMap<>();
+        //adds items to each of the restaurants
         CFA.put("One Chicken Nugget",3.50);
         McD.put("McOne Chicken Nugget",0.01);
         McD.put("McTwo Chicken Nugget",0.51);
@@ -32,28 +36,43 @@ public class randomOrder {
         CFA.put("Milk Shake",4.00);
         CFA.put("Yummy",5.50);
         Wdy.put("Wendy's Special Sauce",12092103454986.00);
+        //adds restaurants to main hashmap
         items1.put("Chick Fil A", CFA);
         items1.put("McDonald's", McD);
         items1.put("Wendy's", Wdy);
         Random rand = new Random();
-
+        //gets keys from main hashmap containing all restaurants
         List<String> restaurants = new ArrayList<>(items1.keySet());
         //num = restaurant pick
         int num = rand.nextInt(restaurants.size());
+        //sets the value equal to the key string
         String restaurant = restaurants.get(num);
+        //grabs the keyset from the correct restaurant and puts it in a menu list
         List<String> menu = new ArrayList<>(items1.get(restaurant).keySet());
         //num1 = item pick
         int num1 = rand.nextInt(menu.size());
 
 
-                //put key values into array, pick randomly from array to input in get
-        if (items1.get(restaurant).get(menu.get(num1)) > input) {
+        //checks if selected item is overbudget, if it is it reruns and says sorry
+        //this gets the restaurant from the items1 hashmap and then gets the menu items from the restaurant
+        double item = items1.get(restaurant).get(menu.get(num1));
+        if (item > budget) {
             System.out.println("sorry");
             randomOrder.main(null);
         } else {
-            System.out.println("The selected item is the " + menu.get(num1) + " from " + restaurant + " and it costs $" + items1.get(restaurant).get(menu.get(num1)) + ".");
-
+            System.out.println("The selected item is the " + menu.get(num1) + " from " + restaurant + " and it costs $" + item + ".");
+            //allows program to loop if they want to go again
+            System.out.println("Would you like to pick again? (y/n)");
+            String input = scan.nextLine();
+            if (input.equals("y")) {
+                //sets tries to 0 in order to let them pick budget again
+                tries = 0;
+                randomOrder.main(null);
+            } else {
+                System.out.println("Have a good day!");
+            }
         }
+
         }
 
 
