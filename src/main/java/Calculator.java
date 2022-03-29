@@ -8,6 +8,7 @@ public class Calculator {
     private ArrayList<String> tokens;
     private ArrayList<String> reverse_polish;
     private Double result;
+    private Double calc;
 
     public Calculator(String expression) {
         // original input
@@ -27,24 +28,47 @@ public class Calculator {
     {
         // Stack used to hold calculation while process RPN
         Stack calculation = new Stack();
-
-        for (String a : tokens)
+        for (String token : this.reverse_polish)
         {
-            if (!isSeperator(a) && !isOperator(a))
+            if (!isSeperator(token) && !isOperator(token))
             {
-
+                calculation.push(token);
             }
             else
             {
+                Double num2 = Double.valueOf((String)calculation.pop());
+                Double num1 = Double.valueOf((String)calculation.pop());
 
+
+
+                switch(token) {
+                    case "+":
+                        calc = num1 + num2;
+                    case "-":
+                        calc = num1 - num2;
+                    case "*":
+                        calc = num1 * num2;
+                    case "/":
+                        calc = num1 / num2;
+                    case "%":
+                        calc = num1 % num2;
+                    case "^":
+                        calc = Math.pow(num1,num2);
+                    case "sqrt":
+                        calc = Math.sqrt(num1);
+                    default:
+                        calc = 0.0;
+                }
                 // Pop the two top entries
-
                 // Based off of Token operator calculate result
-
+                calculation.push(String.valueOf(calc));
                 // Push result back onto the stack
+
+
             }
         }
         // Pop final result and set as final result for expression
+        this.calc = Double.valueOf((String)calculation.pop());
     }
 
     // Print the expression, terms, and result
@@ -137,9 +161,9 @@ public class Calculator {
             }
         }
         // Empty remaining tokens
-        while (tokenStack.peek() != null) {
-            reverse_polish.add((String)tokenStack.pop());
-        }
+            while (tokenStack.peek() != null) {
+                reverse_polish.add((String)tokenStack.pop());
+            }
 
     }
     // Term Tokenizer takes original expression and converts it to ArrayList of tokens
@@ -174,5 +198,10 @@ public class Calculator {
         if (multiCharTerm.length() > 0) {
             tokens.add(this.expression.substring(start));
         }
+    }
+
+    public static void main(String[] args) {
+        Calculator calculator = new Calculator("8 ^ 4");
+        System.out.println(calculator);
     }
 }
