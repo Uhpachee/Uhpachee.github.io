@@ -11,3 +11,12 @@ Linked lists are a linear collection of data elements whose order is not given b
 
 # Generic T
 Can be used for any "type" and represents a generic class.
+
+# Key Learnings (Calculator)
+I learned about how stacks work using the java.util.Stack import, as well as various functions like the switch, pop, and peek functions.
+```
+while (tokenStack.peek() != null) {
+            reverse_polish.add((String)tokenStack.pop());
+        }
+```
+The code snippet above includes both the peek and pop functions. The peek function allows us to view the topmost value on the Stack and the pop allows us to take out a value from the stack and use it as a variable.
