@@ -20,3 +20,5 @@ while (tokenStack.peek() != null) {
         }
 ```
 The code snippet above includes both the peek and pop functions. The peek function allows us to view the topmost value on the Stack and the pop allows us to take out a value from the stack and use it as a variable.
+
+Calculator code: https://github.com/Uhpachee/uhpachee.github.io/blob/main/src/main/java/Calculator.java
