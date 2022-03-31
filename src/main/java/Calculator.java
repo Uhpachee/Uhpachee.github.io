@@ -38,9 +38,18 @@ public class Calculator {
             {
                 Double num2 = Double.valueOf((String)calculation.pop());
                 Double num1 = Double.valueOf((String)calculation.pop());
+                ArrayList<String> operator = new ArrayList<>();
+                ArrayList<String> operator1 = new ArrayList<>();
+                ArrayList<String> operator2 = new ArrayList<>();
+                if (token.equals("+") || token.equals("-")) {
+                    operator.add(token);
+                } else if(token.equals("*") || token.equals("/") || token.equals("%")) {
+                    operator1.add(token);
+                } else if (token.equals("^") || token.equals("sqrt")) {
+                    operator2.add(token);
+                }
 
-
-
+                while(operator.size() != 0 && operator1.size() != 0 && operator2.size() != 0) {
                 switch(token) {
                     case "+":
                         calc = num1 + num2;
@@ -58,7 +67,7 @@ public class Calculator {
                         calc = Math.sqrt(num1);
                     default:
                         calc = 0.0;
-                }
+                }}
                 // Pop the two top entries
                 // Based off of Token operator calculate result
                 calculation.push(String.valueOf(calc));
@@ -138,6 +147,7 @@ public class Calculator {
                     tokenStack.pop();
                     break;
                 case "+":
+
                 case "-":
                 case "*":
                 case "/":
