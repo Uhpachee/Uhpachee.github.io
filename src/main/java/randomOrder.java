@@ -43,24 +43,20 @@ public class randomOrder {
         Random rand = new Random();
         //gets keys from main hashmap containing all restaurants
         List<String> restaurants = new ArrayList<>(items1.keySet());
-        //num = restaurant pick
-        int num = rand.nextInt(restaurants.size());
-        //sets the value equal to the key string
-        String restaurant = restaurants.get(num);
+        //sets random restaurant
+        String restaurant = restaurants.get(rand.nextInt(restaurants.size()));
         //grabs the keyset from the correct restaurant and puts it in a menu list
         List<String> menu = new ArrayList<>(items1.get(restaurant).keySet());
-        //num1 = item pick
-        int num1 = rand.nextInt(menu.size());
 
 
         //checks if selected item is overbudget, if it is it reruns and says sorry
         //this gets the restaurant from the items1 hashmap and then gets the menu items from the restaurant
-        double item = items1.get(restaurant).get(menu.get(num1));
+        double item = items1.get(restaurant).get(menu.get(rand.nextInt(menu.size())));
         if (item > budget) {
             System.out.println("sorry");
             randomOrder.main(null);
         } else {
-            System.out.println("The selected item is the " + menu.get(num1) + " from " + restaurant + " and it costs $" + item + ".");
+            System.out.println("The selected item is the " + menu.get(rand.nextInt(menu.size())) + " from " + restaurant + " and it costs $" + item + ".");
             //allows program to loop if they want to go again
             System.out.println("Would you like to pick again? (y/n)");
             String input = scan.nextLine();

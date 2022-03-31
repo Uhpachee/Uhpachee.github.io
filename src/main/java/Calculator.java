@@ -1,7 +1,4 @@
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Stack;
+import java.util.*;
 
 public class Calculator {
     private final String expression;
@@ -49,7 +46,7 @@ public class Calculator {
                     operator2.add(token);
                 }
 
-                while(operator.size() != 0 && operator1.size() != 0 && operator2.size() != 0) {
+                while(operator.size() != 0 || operator1.size() != 0 || operator2.size() != 0) {
                 switch(token) {
                     case "+":
                         calc = num1 + num2;
@@ -133,6 +130,7 @@ public class Calculator {
 
         // stack is used to reorder for appropriate grouping and precedence
         Stack tokenStack = new Stack();
+        LinkedList operatorList = new LinkedList();
         for (String token : tokens) {
             switch (token) {
                 // If left bracket push token on to stack
@@ -147,10 +145,13 @@ public class Calculator {
                     tokenStack.pop();
                     break;
                 case "+":
-
+                    operatorList.addLast(token);
                 case "-":
+                    operatorList.addLast(token);
                 case "*":
+                    operatorList.addFirst(token);
                 case "/":
+                    operatorList.addFirst(token);
                 case "%":
                     // While stack
                     // not empty AND stack top element
@@ -169,6 +170,10 @@ public class Calculator {
                 default:    // Default should be a number, there could be test here
                     this.reverse_polish.add(token);
             }
+
+        }
+        for (int i = 0; i < operatorList.size(); i++) {
+            tokenStack.push(operatorList.get(i));
         }
         // Empty remaining tokens
             while (tokenStack.peek() != null) {
