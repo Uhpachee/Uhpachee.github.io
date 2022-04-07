@@ -13,7 +13,6 @@ Merge Sort - Original array is split in half and then it merges the halves back 
 
 
 ### Week 2
-###### Key Learnings (Calculator)
 I learned about how stacks work using the java.util.Stack import, as well as various functions like the switch, pop, and peek functions.
 ```
 while (tokenStack.peek() != null) {
