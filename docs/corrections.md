@@ -3,6 +3,8 @@
 # 2015 MCQ Revisions
 (Due to timing issues, I just put random answers on questions 33-39, so those won't be covered)
 
+Technically I got a 28/32 excluding the questions that I had to skip because of time. 
+
 ##### Q9
 A pair of number cubes is used in a game of chance. Each number cube has six sides, numbered from 1 to 6, inclusive, and there is an equal probability for each of the numbers to appear on the top side (indicating the cube's value) when the number cube is rolled. The following incomplete statement appears in a program that computes the sum of the values produced by rolling two number cubes.
 
