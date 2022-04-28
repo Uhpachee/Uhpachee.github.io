@@ -1,3 +1,6 @@
+package Week1FRQs;
+import java.util.*;
+
 public class SparseArray {
   private int numRows;
   private int numCols;
@@ -23,12 +26,22 @@ public class SparseArray {
   public void removeColumn(int col) {
     for(SparseArrayEntry a : entries) {
       if(a.getCol() == col) {
-        List.remove();
+        entries.remove(a);
       }
       if(a.getCol() > col) {
-        SparseArrayEntry(a.getRow(),a.getCol()-1,a.getValue());
-          List.remove(a);
+        new SparseArrayEntry(a.getRow(),a.getCol()-1,a.getValue());
+          entries.remove(a);
         }
       }
+    }
+
+    public static void main(String[] args) {
+      SparseArray arr = new SparseArray();
+      new SparseArrayEntry(4,3,1);
+      new SparseArrayEntry(7,6,3);
+      new SparseArrayEntry(1,1,2);
+      new SparseArrayEntry(3,9,15);
+      new SparseArrayEntry(4,1,6);
+      arr.removeColumn(1);
     }
 }

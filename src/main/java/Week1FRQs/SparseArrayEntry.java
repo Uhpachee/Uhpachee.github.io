@@ -1,3 +1,5 @@
+package Week1FRQs;
+
 public class SparseArrayEntry {
   private int row;
   private int col;

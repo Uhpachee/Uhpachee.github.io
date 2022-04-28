@@ -1,3 +1,5 @@
+package Week1FRQs;
+
 public class FRQ1 {
   public static int arraySum(int[] arr) {
     int sum = 0;
@@ -7,7 +9,7 @@ public class FRQ1 {
     return sum;
   }
   
-  public static int rowSums(int[][] arr2D) {
+  public static int[] rowSums(int[][] arr2D) {
     int[] sum = new int[arr2D.length];
     for (int i = 0; i < arr2D.length; i++) {
       int[] temp = new int[arr2D[i].length];
@@ -24,10 +26,21 @@ public class FRQ1 {
     int[] check = rowSums(arr2D);
     int temp = 0;
     for(int i = 0; i < check.length; i++) {
-      if(temp == check[j]) {
+      if(temp == check[i]) {
         yes = false;
       }
     }
     return yes;
+  }
+
+  public static void main(String[] args) {
+    int[][] test = {
+            {1, 2, 3, 4, 5, 6, 7},
+            {8, 9, 1, 5, 3, 4, 2},
+            {8, 5, 4, 2, 8, 6, 3},
+            {1, 9, 5, 2, 9, 6, 4}
+    };
+    FRQ1 a = new FRQ1();
+    System.out.println(a.isDiverse(test));
   }
 }
