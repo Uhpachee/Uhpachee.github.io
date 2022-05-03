@@ -15,4 +15,5 @@ Correct Answer: 2 + (int) (Math.random() * 6) + (int) (Math.random() * 6)
 Explanation: When using Math.random() a random number from 0 to 1 is generated, then multiplied by 6, then rounded down to the nearest integer. Since it rounds down, we have to add 1 to the answer in order to make it possible to even get a value of 6 we have to add 1 to the integer. Since there are 2 die, we add 2.
 
 
-##### Q
+##### Q16
+
